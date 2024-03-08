@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO</title>
+</head>
+<link rel="stylesheet" href="style">
+<body >
+    <div class="task-form-container">
+        <button id="createTaskButton" onclick="toggleTaskForm()">Create New Task</button>
+        <div class="task-form" style="display: none;" id="createForm">
+            <h2>Create New Task</h2>
+            <input type="text" id="taskName" placeholder="Task Name" required><br><br>
+            <textarea id="taskDescription" placeholder="Task Description" required></textarea><br><br>
+            <input type="date" id="startDate" required> to <input type="date" id="endDate" required><br><br>
+            <input type="time" id="startTime" required> to <input type="time" id="endTime" required>
+            <button onclick="createTask()">Create Task</button>
+            <button onclick="closeForm()" id="cancel">Cancel</button>
+        </div>
+    </div>
+
+    <div class="container" id="body">
+        <div id="pendingColumn" class="column" ondrop="drop(event, 'pending')" ondragover="allowDrop(event)">
+            <h3>Pending</h3>
+        </div>
+        <div id="inProgressColumn" class="column" ondrop="drop(event, 'inProgress')" ondragover="allowDrop(event)">
+            <h3>In Progress</h3>
+        </div>
+        <div id="completedColumn" class="column" ondrop="drop(event, 'completed')" ondragover="allowDrop(event)">
+            <h3>Completed</h3>
+        </div>
+    </div>
+
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <!-- <span class="close">&times;</span> -->
+            <h2>Edit Task</h2>
+            <input type="text" id="editedTaskName" placeholder="Task Name" required><br><br>
+            <textarea id="editedTaskDescription" placeholder="Task Description" required></textarea><br><br>
+            <input type="date" id="editedStartDate" required> to <input type="date" id="editedEndDate" required><br><br>
+            <input type="time" id="editedStartTime" required> to <input type="time" id="editedEndTime" required><br><br>
+            <button id="saveChanges">Save Changes</button>
+        </div>
+    </div>
+
+    <script src="scripts"></script>
+
+<button class="prev" onclick="loadPrevious()">👈Prev</button>
+<button class="next" onclick="loadNext()">👉Next</button>
+</body>
+
+</html>
